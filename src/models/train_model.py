@@ -1,7 +1,8 @@
 from tensorflow import keras
+import numpy as np
 
 
-def make_model():
+def make_model() -> keras.Model:
     model = keras.models.Sequential()
     model.add(keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(64, 64, 1)))
     model.add(keras.layers.AveragePooling2D((2, 2)))
@@ -12,7 +13,8 @@ def make_model():
     model.add(keras.layers.Dense(4))
     return model
 
-def compile_and_train(model, X, y):
+
+def compile_and_train(model: keras.Model, X: np.ndarray, y:np.ndarray) -> (keras.Model, keras.callbacks.History):
     model.compile(loss="mean_absolute_error", optimizer="Adam", metrics=[])
     checkpoint_filepath = './tmp/checkpoint'
     checkpoint_callback = keras.callbacks.ModelCheckpoint(

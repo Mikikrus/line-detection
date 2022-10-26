@@ -1,15 +1,16 @@
 from matplotlib import pyplot as plt
 import numpy as np
+from tensorflow import keras
 from src.data.make_dataset import generate_image
 
-def show_training_history(history):
+def show_training_history(history: keras.callbacks.History) -> None:
     plt.plot(history.history['loss'], label='train')
     plt.plot(history.history['val_loss'], label='test')
     plt.legend()
     plt.show()
 
 
-def show_examples(model, n):
+def show_examples(model: keras.Model, n: int) -> None:
     canvas = np.full([64, 64, 1], 1, dtype=np.uint8)
     fig, axs = plt.subplots(n, n)
     fig.set_size_inches(15, 15)
