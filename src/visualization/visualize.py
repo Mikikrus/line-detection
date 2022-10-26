@@ -1,5 +1,5 @@
 from matplotlib import pyplot as plt
-
+import numpy as np
 
 def show_training_history(history):
     plt.plot(history.history['loss'], label='train')
