@@ -1,5 +1,6 @@
 from matplotlib import pyplot as plt
 import numpy as np
+from src.data.make_dataset import generate_image
 
 def show_training_history(history):
     plt.plot(history.history['loss'], label='train')
